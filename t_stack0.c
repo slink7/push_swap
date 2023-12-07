@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_stack.c                                          :+:      :+:    :+:   */
+/*   t_stack0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:01:00 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/07 04:11:12 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/07 04:40:42 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ static int	ft_strarrlen(char **ptr)
 	return (k);
 }
 
-// int	pop_stack(t_stack *s)
-// {
-// 	if (s->height < 1)
-// 		return (-0x80000000);
-// 	return (s->content[s->height--] = 0);
-// }
-
 t_stack	*new_stack(int size)
 {
 	t_stack	*out;
@@ -68,13 +61,6 @@ void	free_stack(t_stack **s)
 	free((*s)->content);
 	free(*s);
 	*s = 0;
-}
-
-void	push_stack(t_stack *s, int k)
-{
-	if (s->height >= s->size)
-		return ;
-	s->content[s->height++] = k;
 }
 
 t_stack	*read_stack(char *str)

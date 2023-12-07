@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/07 04:19:08 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/07 05:14:00 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	ft_atoi_strict(int *out, char *in)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+t_stack	*stack_argv(int argc, char **argv)
 {
-	t_stack *s;
+	t_stack	*s;
 	int		tp;
 
 	s = new_stack(argc - 1);
@@ -46,13 +46,69 @@ int	main(int argc, char **argv)
 	{
 		if (!ft_atoi_strict(&tp, argv[argc]))
 		{
-			free_stack(&s);
 			write(2, "Error\n", 6);
-			return (0);
+			free_stack(&s);
+			break ;
 		}
 		push_stack(s, tp);
 	}
-	for(int k = 0; k < s->size; k++)
+	return (s);
+}
+
+void PRINT_STACK(t_stack *s)
+{
+	for (int k = 0; k < s->height; k++)
 		printf("[%d]", s->content[k]);
-	free_stack(&s);
+	printf("\n");
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack *b;
+	
+	a = stack_argv(argc, argv);
+	b = new_stack(a->size);
+	
+	PRINT_STACK(a);
+	PRINT_STACK(b);
+	printf("\n");
+	
+	swap_stack(a);
+
+	PRINT_STACK(a);
+	PRINT_STACK(b);
+	printf("\n");
+	
+	int temp;
+	temp = pop_stack(a);
+	push_stack(b, temp);
+	temp = pop_stack(a);
+	push_stack(b, temp);
+	temp = pop_stack(a);
+	push_stack(b, temp);
+	
+	PRINT_STACK(a);
+	PRINT_STACK(b);
+	printf("\n");
+
+	swap_stack(a);
+
+	PRINT_STACK(a);
+	PRINT_STACK(b);
+	printf("\n");
+
+	temp = pop_stack(b);
+	push_stack(a, temp);
+	temp = pop_stack(b);
+	push_stack(a, temp);
+	temp = pop_stack(b);
+	push_stack(a, temp);
+
+	PRINT_STACK(a);
+	PRINT_STACK(b);
+	printf("\n");
+
+	free_stack(&a);
+	free_stack(&b);
 }
