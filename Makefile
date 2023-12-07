@@ -1,5 +1,7 @@
 
-SRC = main.c
+SRC =\
+	main.c\
+	t_stack.c\
 
 OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
 
