@@ -5,18 +5,18 @@ OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
 
 NAME = push_swap
 
-CSFLAGS = -Wall -Werror -Werror
+CSFLAGS = -Wall -Werror -Werror 
 
 all : $(NAME)
 
 libft/libft.a :
-	cd libft/ ; make all
+	cd libft/ ; make bonus
 
 %.o : %.c
-	cc $(CFLAGS) -o $@ -c $< -Ilibft/
+	cc -g3 $(CFLAGS) -o $@ -c $< -Ilibft/
 
 $(NAME) : $(OBJ) libft/libft.a
-	cc -o $(NAME) $(OBJ) -Llibft/ -lft
+	cc -g3 -o $(NAME) $(OBJ) -Llibft/ -lft
 
 clean :
 	rm $(OBJ)
