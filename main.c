@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/07 05:14:00 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:39:38 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,30 @@ void PRINT_STACK(t_stack *s)
 	printf("\n");
 }
 
+int	is_ordered(t_stack *t)
+{
+	int	k;
+
+	k = -1;
+	while (++k < t->height - 1)
+		if (t->content[k] < t->content[k + 1])
+			return (0); 
+	return (1);
+}
+
+int	find_min(t_stack *t)
+{
+	int	k;
+	int	min;
+
+	k = -1;
+	min = 0;
+	while (++k < t->height)
+		if (t->content[min] > t->content[k])
+			min = k;
+	return (t->height - min - 1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -70,45 +94,26 @@ int	main(int argc, char **argv)
 	a = stack_argv(argc, argv);
 	b = new_stack(a->size);
 	
-	PRINT_STACK(a);
-	PRINT_STACK(b);
-	printf("\n");
-	
-	swap_stack(a);
-
-	PRINT_STACK(a);
-	PRINT_STACK(b);
-	printf("\n");
-	
-	int temp;
-	temp = pop_stack(a);
-	push_stack(b, temp);
-	temp = pop_stack(a);
-	push_stack(b, temp);
-	temp = pop_stack(a);
-	push_stack(b, temp);
-	
-	PRINT_STACK(a);
-	PRINT_STACK(b);
-	printf("\n");
-
-	swap_stack(a);
-
-	PRINT_STACK(a);
-	PRINT_STACK(b);
-	printf("\n");
-
-	temp = pop_stack(b);
-	push_stack(a, temp);
-	temp = pop_stack(b);
-	push_stack(a, temp);
-	temp = pop_stack(b);
-	push_stack(a, temp);
-
-	PRINT_STACK(a);
-	PRINT_STACK(b);
-	printf("\n");
-
+	while (1)
+	{
+		if (a->height < 1)
+		{
+			while (b->height > 0)
+			{
+				write(1, "pa\n", 3);
+				push_stack(a, pop_stack(b));
+			}
+			break ;
+		}
+		int r = find_min(a);
+		for (int k = 0; k < r; k++)
+		{
+			write(1, "ra\n", 3);
+			rotate_stack(a);
+		}
+		write(1, "pb\n", 3);
+		push_stack(b, pop_stack(a));
+	}
 	free_stack(&a);
 	free_stack(&b);
 }
