@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/07 15:39:38 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/08 22:45:28 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_stack	*stack_argv(int argc, char **argv)
 	{
 		if (!ft_atoi_strict(&tp, argv[argc]))
 		{
-			write(2, "Error\n", 6);
 			free_stack(&s);
 			break ;
 		}
@@ -60,6 +59,22 @@ void PRINT_STACK(t_stack *s)
 	for (int k = 0; k < s->height; k++)
 		printf("[%d]", s->content[k]);
 	printf("\n");
+}
+
+int	has_dup(t_stack *t)
+{
+	int	k;
+	int	l;
+
+	k = -1;
+	while (++k < t->height)
+	{
+		l = -1;
+		while (++l < t->height)
+			if (t->content[k] == t->content[l] && k != l)
+				return (1);
+	}
+	return (0);
 }
 
 int	is_ordered(t_stack *t)
@@ -86,34 +101,50 @@ int	find_min(t_stack *t)
 	return (t->height - min - 1);
 }
 
-int	main(int argc, char **argv)
+void	gitan_sort(t_stack *a)
 {
-	t_stack	*a;
 	t_stack *b;
-	
-	a = stack_argv(argc, argv);
+
 	b = new_stack(a->size);
-	
 	while (1)
 	{
-		if (a->height < 1)
+		if (is_ordered(a) && b->height == 0)
+			break ;
+		if (a->height < 1 || is_ordered(a))
 		{
 			while (b->height > 0)
-			{
-				write(1, "pa\n", 3);
-				push_stack(a, pop_stack(b));
-			}
+				pa(a, b);
 			break ;
 		}
 		int r = find_min(a);
 		for (int k = 0; k < r; k++)
+			ra(a, b);
+		if (a->height < 1 || is_ordered(a))
 		{
-			write(1, "ra\n", 3);
-			rotate_stack(a);
+			while (b->height > 0)
+				pa(a, b);
+			break ;
 		}
-		write(1, "pb\n", 3);
-		push_stack(b, pop_stack(a));
+		if (is_ordered(a) && b->height == 0)
+			break ;
+		pb(a, b);
 	}
-	free_stack(&a);
 	free_stack(&b);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	
+	a = stack_argv(argc, argv);
+	if (!a || has_dup(a))
+	{
+		ft_putstr_fd("Error\n", 2);
+		free_stack(&a);
+		return (0);
+	}	
+	//PRINT_STACK(a);
+	gitan_sort(a);
+	//PRINT_STACK(a);
+	free_stack(&a);
 }
