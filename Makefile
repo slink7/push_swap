@@ -3,6 +3,10 @@ SRC =\
 	main.c\
 	t_stack0.c\
 	t_stack1.c\
+	ft_swap.c\
+	ft_push.c\
+	ft_rotate.c\
+	ft_reverse_rotate.c
 
 OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
 
@@ -23,7 +27,6 @@ $(NAME) : $(OBJ) libft/libft.a
 
 clean :
 	rm $(OBJ)
-	cd libft/ ; make clean
 
 fclean : clean
 	rm $(NAME)
@@ -31,19 +34,5 @@ fclean : clean
 
 re : fclean all
 
-TEST :
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 3 5 2 1 | ./checker_linux "3 5 2 1"
-	./push_swap 2 | ./checker_linux "2"
-	./push_swap 2 99999 1 | ./checker_linux "2 99999 1"
-	./push_swap 2 1 3 | ./checker_linux "2 1 3"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
-	./push_swap 2 1 | ./checker_linux "2 1"
+TEST : all clean
+	cd push_swap_tester ; ./complexity 100 100 800 ../checker_linux
