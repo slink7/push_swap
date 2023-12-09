@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 15:06:45 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:21:21 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,40 @@ t_stack	*stack_argv(int argc, char **argv)
 	return (s);
 }
 
-// void	PRINT_STACK(t_stack *s)
-// {
-// 	for (int k = 0; k < s->height; k++)
-// 		printf("[%d]", s->content[k]);
-// 	printf("\n");
-// }
+void	PRINT_STACK(t_stack *s)
+{
+	int	c;
+	int	prev;
+
+	for (int k = 0; k < s->height; k++)
+		printf("[%d]", s->content[k]);
+	c = 1;
+	for (int k = s->height - 2; k >= 0; k--) {
+		if (s->content[k] < s->content[k + 1])
+			c++;
+	}
+	printf("(%druns)\n", c);
+}
+
+void	sort_two(t_stack *a)
+{
+	if (top_stack(a, 1) < top_stack(a, 0))
+		sa(a, 0);
+}
+
+void	sort_three(t_stack *a)
+{
+	int	m;
+
+	m = find_min(a);
+	if (m == 0)
+		ra(a, 0);
+	else if (m == 1)
+		rra(a, 0);
+	if (top_stack(a, 1) < top_stack(a, 0))
+		sa(a, 0);
+	rra(a, 0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -72,6 +100,14 @@ int	main(int argc, char **argv)
 		free_stack(&a);
 		return (0);
 	}
-	gitan_sort(a);
+	if (!is_ordered(a) || a->size < 2)
+	{
+		if (a->size < 3)
+			sort_two(a);
+		else if (a->size < 4)
+			sort_three(a);
+		else
+			gitan_sort(a);
+	}
 	free_stack(&a);
 }

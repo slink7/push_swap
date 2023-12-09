@@ -8,7 +8,8 @@ SRC =\
 	ft_push.c\
 	ft_rotate.c\
 	ft_reverse_rotate.c\
-	gitan_sort.c
+	gitan_sort.c\
+	run_sort.c
 
 OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
 
@@ -38,10 +39,25 @@ re : fclean all
 
 CHECKER = ../checker_linux
 
+spec :
+	printf "./push_swap %s > err.txt\n" {0..4}\ {0..4}\ {0..4}\ {0..4}\ {0..4} > script.sh
+	bash -x script.sh
+
 TEST : all
-	@echo "\n\tTEST 100"
+	@cd push_swap_tester ; make
+	@echo "\n\t\e[100mTEST 3\e[0m"
+	@cd push_swap_tester ; ./complexity 3 100 3 $(CHECKER) || true
+	@echo "\n\t\e[100mTEST 5\e[0m"
+	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) || true
+	@echo "\n\t\e[100mTEST 100\e[0m"
+	@cd push_swap_tester ; ./complexity 100 100 1500 $(CHECKER) || true
+	@echo "\n\t\e[100mTEST 500\e[0m"
+	@cd push_swap_tester ; ./complexity 500 100 5500 $(CHECKER) || true
+
+st : all
+	@echo "\n\t\e[100mTEST 100\e[0m"
 	@cd push_swap_tester ; ./complexity 100 100 800 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
-	@echo "\n\tTEST 3"
+	@echo "\n\t\e[100mTEST 3\e[0m"
 	@cd push_swap_tester ; ./complexity 3 100 3 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
-	@echo "\n\tTEST 5"
+	@echo "\n\t\e[100mTEST 5\e[0m"
 	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt

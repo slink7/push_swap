@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 15:11:45 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:25:53 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ typedef struct t_stack
 
 //t_stack0.c
 t_stack	*new_stack(int size);
-void	free_stack(t_stack **s);
+int		free_stack(t_stack **s);
 t_stack	*read_stack(char *str);
+int		top_stack(t_stack *a, int off);
 
 //t_stack1.c
-void	push_stack(t_stack *s, int k);
+int		push_stack(t_stack *s, int k);
 int		pop_stack(t_stack *s);
 void	swap_stack(t_stack *s);
 void	rotate_stack(t_stack *s);
@@ -58,5 +59,8 @@ void	rrr(t_stack *a, t_stack *b);
 
 //gitan_sort.c
 void	gitan_sort(t_stack *a);
+
+//run_sort.c
+void	run_sort(t_stack *a);
 
 #endif

@@ -6,17 +6,18 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:39:35 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 14:34:20 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:01:32 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_stack.h"
 
-void	push_stack(t_stack *s, int k)
+int	push_stack(t_stack *s, int k)
 {
 	if (s->height >= s->size)
-		return ;
+		return (0);
 	s->content[s->height++] = k;
+	return (1);
 }
 
 int	pop_stack(t_stack *s)
