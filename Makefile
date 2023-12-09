@@ -3,10 +3,12 @@ SRC =\
 	main.c\
 	t_stack0.c\
 	t_stack1.c\
+	t_stack2.c\
 	ft_swap.c\
 	ft_push.c\
 	ft_rotate.c\
-	ft_reverse_rotate.c
+	ft_reverse_rotate.c\
+	gitan_sort.c
 
 OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
 
