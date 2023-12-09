@@ -36,5 +36,12 @@ fclean : clean
 
 re : fclean all
 
-TEST : all clean
-	cd push_swap_tester ; ./complexity 100 100 800 ../checker_linux
+CHECKER = ../checker_linux
+
+TEST : all
+	@echo "\n\tTEST 100"
+	@cd push_swap_tester ; ./complexity 100 100 800 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
+	@echo "\n\tTEST 3"
+	@cd push_swap_tester ; ./complexity 3 100 3 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
+	@echo "\n\tTEST 5"
+	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
