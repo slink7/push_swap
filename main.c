@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 23:21:21 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:13:56 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 		else if (a->size < 4)
 			sort_three(a);
 		else
-			gitan_sort(a);
+			run_sort(a);
 	}
 	free_stack(&a);
 }
