@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 20:25:53 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:00:30 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a, t_stack *b);
 void	rrb(t_stack *a, t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+
+//ft_puttop.c
+int		putup_cost(int k, int h);
+int		mega_putup_cost(int k, int l, t_stack *a, t_stack *b);
+void	puttop_a(int k, t_stack *a);
+void	puttop_b(int k, t_stack *b);
+void	puttops(int k, int l, t_stack *a, t_stack *b);
 
 //gitan_sort.c
 void	gitan_sort(t_stack *a);

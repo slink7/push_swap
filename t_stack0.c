@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:01:00 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 20:26:06 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:19:29 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,4 @@ t_stack	*read_stack(char *str)
 		push_stack(out, ft_atoi(w[k]));
 	ft_strarrfree(w);
 	return (out);
-}
-int	top_stack(t_stack *a, int off)
-{
-	return (a->content[a->height - 1 - off]);
 }

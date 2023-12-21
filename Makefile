@@ -9,9 +9,13 @@ SRC =\
 	ft_rotate.c\
 	ft_reverse_rotate.c\
 	gitan_sort.c\
-	run_sort.c
+	run_sort.c\
+	ft_ordered_pb.c\
+	ft_ordered_pa.c\
+	ft_puttop.c
 
-OBJ = $(addsuffix .o, $(notdir $(basename $(SRC))))
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
 
 NAME = push_swap
 
@@ -22,10 +26,13 @@ all : $(NAME)
 libft/libft.a :
 	cd libft/ ; make bonus
 
-%.o : %.c
+$(OBJ_DIR) :
+	mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o : %.c
 	cc -g3 $(CFLAGS) -o $@ -c $< -Ilibft/
 
-$(NAME) : $(OBJ) libft/libft.a
+$(NAME) : $(OBJ_DIR) $(OBJ) libft/libft.a
 	cc -g3 -o $(NAME) $(OBJ) -Llibft/ -lft
 
 clean :
