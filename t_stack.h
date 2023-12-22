@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/20 16:00:30 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:10:27 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	gitan_sort(t_stack *a);
 
 //run_sort.c
 void	run_sort(t_stack *a);
+void	sort_three(t_stack *a);
 
 #endif

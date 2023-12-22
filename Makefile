@@ -12,7 +12,8 @@ SRC =\
 	run_sort.c\
 	ft_ordered_pb.c\
 	ft_ordered_pa.c\
-	ft_puttop.c
+	ft_puttop.c\
+	mekherbo_sort.c
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
@@ -57,7 +58,7 @@ TEST : all
 	@echo "\n\t\e[100mTEST 5\e[0m"
 	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) || true
 	@echo "\n\t\e[100mTEST 100\e[0m"
-	@cd push_swap_tester ; ./complexity 100 100 1500 $(CHECKER) || true
+	@cd push_swap_tester ; ./complexity 100 100 700 $(CHECKER) || true
 	@echo "\n\t\e[100mTEST 500\e[0m"
 	@cd push_swap_tester ; ./complexity 500 100 5500 $(CHECKER) || true
 

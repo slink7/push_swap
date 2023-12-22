@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/14 15:13:56 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:24:03 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 
-	a = stack_argv(argc, argv);
+	if (argc == 2)
+		a = read_stack(argv[1]);
+	else
+		a = stack_argv(argc, argv);
 	if (!a || has_dup(a))
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -107,7 +110,9 @@ int	main(int argc, char **argv)
 		else if (a->size < 4)
 			sort_three(a);
 		else
-			run_sort(a);
+			mekherbo_sort(a);
 	}
+	// printf("Final:");
+	// PRINT_STACK(a);
 	free_stack(&a);
 }

@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:18:34 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/20 19:16:05 by scambier         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:35:41 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ int	get_max(t_stack *a)
 
 int	get_target_pb(int k, t_stack *a, t_stack *b)
 {
-	if (has_lower_in_b(k, a, b))
+
 		return (get_target_closest_pb(k, a, b));
-	else
-		return (get_max(b));
 }
 
 int	get_lowest_cost_pb(t_stack *a, t_stack *b)
