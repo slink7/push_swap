@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:18:34 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 18:44:10 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:21:41 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ int	get_target_closest_pb(int k, t_stack *a, t_stack *b)
 	l = -1;
 	out = -1;
 	while (++l < b->height)
-	{
-		if (top_stack(a, k) > top_stack(b, l) && (out == -1 || top_stack(b, l) > top_stack(b, out)))
-		{
+		if (top_stack(a, k) > top_stack(b, l)
+			&& (out == -1 || top_stack(b, l) > top_stack(b, out)))
 			out = l;
-		}
-	}
 	return (out);
 }
 
@@ -44,8 +41,7 @@ int	get_max(t_stack *a)
 
 int	get_target_pb(int k, t_stack *a, t_stack *b)
 {
-
-		return (get_target_closest_pb(k, a, b));
+	return (get_target_closest_pb(k, a, b));
 }
 
 int	get_lowest_cost_pb(t_stack *a, t_stack *b)
@@ -58,11 +54,9 @@ int	get_lowest_cost_pb(t_stack *a, t_stack *b)
 	k = -1;
 	lowest = 0;
 	out = 0;
-	//printf("\n\tCostList :\n");
 	while (++k < a->height)
 	{
 		cost = mega_putup_cost(k, get_target_pb(k, a, b), a, b);
-		//printf("Cost(%d) : %d\n", top_stack(a, k), cost);
 		if (cost < lowest)
 		{
 			lowest = cost;

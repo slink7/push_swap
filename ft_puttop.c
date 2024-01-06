@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:23:09 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 19:56:13 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:24:37 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	puttop_b(int k, t_stack *b)
 		while (++l < b->height - k)
 			rrb(0, b, 1);
 }
+
 void	puttops(int k, int l, t_stack *a, t_stack *b)
 {
 	int	tra;

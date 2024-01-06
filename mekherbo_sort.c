@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:52 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 20:01:19 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:24:16 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	get_target_index(t_stack *a, t_stack *b)
 	while (++k < b->height)
 	{
 		temp = find_target(a, top_stack(b, k));
-		// printf("target of %d is %d\n", top_stack(b, k), top_stack(a, temp));
 		temp = get_cost(a, b, temp, k);
 		if (temp < min)
 		{
@@ -130,8 +129,8 @@ void	make_move(t_stack *a, t_stack *b, int ia, int ib)
 
 int	get_min_index(t_stack *a)
 {
-	int k;
-	int out;
+	int	k;
+	int	out;
 	int	min;
 
 	k = -1;
@@ -148,7 +147,7 @@ int	get_min_index(t_stack *a)
 
 void	put_min_top(t_stack *a)
 {
-	int i;
+	int	i;
 	int	k;
 
 	i = get_min_index(a);
@@ -163,33 +162,16 @@ void	put_min_top(t_stack *a)
 
 void	mekherbo_sort(t_stack *a)
 {
-	t_stack *b;
-	int	lowcost;
+	t_stack	*b;
+	int		lowcost;
 
 	b = new_stack(a->size);
-	// printf("f : \n");
-	// PRINT_STACK(a);
-	// PRINT_STACK(b);
 	fill_stack_b(a, b);
-	// printf("pfsb : \n");
-	// PRINT_STACK(a);
-	// PRINT_STACK(b);
 	sort_three(a);
-	// printf("pst : \n");
-	// PRINT_STACK(a);
-	// PRINT_STACK(b);
 	while (b->height > 0)
 	{
 		lowcost = get_target_index(a, b);
-		// printf("wanna push (b[%d]:%d) on (a[%d]:%d)\nCost:%d\n", 
-		// 	lowcost,
-		// 	top_stack(b, lowcost),
-		// 	find_target(a, top_stack(b, lowcost)),
-		// 	top_stack(a, find_target(a, top_stack(b, lowcost))),
-		// 	get_cost(a, b, find_target(a, top_stack(b, lowcost)), lowcost));
 		make_move(a, b, find_target(a, top_stack(b, lowcost)), lowcost);
-		// PRINT_STACK(a);
-		// PRINT_STACK(b);
 	}
 	put_min_top(a);
 	free_stack(&b);

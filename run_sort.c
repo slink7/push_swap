@@ -6,14 +6,14 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:45:13 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/20 15:30:50 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:19:35 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "t_stack.h"
 
-int has_higher_in_a(int k, t_stack *a, t_stack *b)
+int	has_higher_in_a(int k, t_stack *a, t_stack *b)
 {
 	int	l;
 
