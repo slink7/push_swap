@@ -14,9 +14,19 @@ SRC =\
 	ft_ordered_pa.c\
 	ft_puttop.c\
 	mekherbo_sort.c
+SRC_BONUS =\
+	main_bonus.c\
+	t_stack0.c\
+	t_stack1.c\
+	t_stack2.c\
+	ft_push.c\
+	ft_rotate.c\
+	ft_reverse_rotate.c\
+	ft_swap.c
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
+OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC_BONUS)))))
 
 NAME = push_swap
 
@@ -32,6 +42,9 @@ $(OBJ_DIR) :
 
 $(OBJ_DIR)/%.o : %.c
 	cc -g3 $(CFLAGS) -o $@ -c $< -Ilibft/
+
+bonus : $(OBJ_BONUS)
+	cc -g3 -o checker $(OBJ_BONUS) -Llibft/ -lft
 
 $(NAME) : $(OBJ_DIR) $(OBJ) libft/libft.a
 	cc -g3 -o $(NAME) $(OBJ) -Llibft/ -lft
@@ -50,6 +63,7 @@ CHECKER = ../checker_linux
 spec :
 	printf "./push_swap %s > err.txt\n" {0..4}\ {0..4}\ {0..4}\ {0..4}\ {0..4} > script.sh
 	bash -x script.sh
+	ARG="1 5 4 8 6"; ./push_swap $ARG | ./checker_linux $ARG
 
 TEST : all
 	@cd push_swap_tester ; make
