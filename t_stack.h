@@ -6,12 +6,14 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/21 16:10:27 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:54:41 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_STACK_H
 # define T_STACK_H
+
+# define PRINT_FD 1
 
 typedef struct t_stack
 {
@@ -39,23 +41,23 @@ int		is_ordered(t_stack *t);
 int		find_min(t_stack *t);
 
 //ft_swap.c
-void	sa(t_stack *a, t_stack *b);
-void	sb(t_stack *a, t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+int		sa(t_stack *a, t_stack *b, int print);
+int		sb(t_stack *a, t_stack *b, int print);
+int		ss(t_stack *a, t_stack *b, int print);
 
 //ft_push.c
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+int		pa(t_stack *a, t_stack *b, int print);
+int		pb(t_stack *a, t_stack *b, int print);
 
 //ft_rotate.c
-void	ra(t_stack *a, t_stack *b);
-void	rb(t_stack *a, t_stack *b);
-void	rr(t_stack *a, t_stack *b);
+int		ra(t_stack *a, t_stack *b, int print);
+int		rb(t_stack *a, t_stack *b, int print);
+int		rr(t_stack *a, t_stack *b, int print);
 
 //ft_reverse_rotate.c
-void	rra(t_stack *a, t_stack *b);
-void	rrb(t_stack *a, t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
+int		rra(t_stack *a, t_stack *b, int print);
+int		rrb(t_stack *a, t_stack *b, int print);
+int		rrr(t_stack *a, t_stack *b, int print);
 
 //ft_puttop.c
 int		putup_cost(int k, int h);

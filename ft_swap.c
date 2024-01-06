@@ -6,28 +6,34 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 22:26:00 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/09 14:34:04 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:54:34 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "t_stack.h"
 
-void	sa(t_stack *a, t_stack *b)
+int	sa(t_stack *a, t_stack *b, int print)
 {
-	ft_putstr_fd("sa\n", 1);
 	swap_stack(a);
+	if (print)
+		ft_putstr_fd("sa\n", PRINT_FD);
+	return (1);
 }
 
-void	sb(t_stack *a, t_stack *b)
+int	sb(t_stack *a, t_stack *b, int print)
 {
-	ft_putstr_fd("sb\n", 1);
 	swap_stack(b);
+	if (print)
+		ft_putstr_fd("sb\n", PRINT_FD);
+	return (1);
 }
 
-void	ss(t_stack *a, t_stack *b)
+int	ss(t_stack *a, t_stack *b, int print)
 {
-	ft_putstr_fd("ss\n", 1);
 	swap_stack(a);
 	swap_stack(b);
+	if (print)
+		ft_putstr_fd("ss\n", PRINT_FD);
+	return (1);
 }

@@ -69,6 +69,6 @@ void	ordered_pa(t_stack *a, t_stack *b)
 		target = get_target_pa(lc_index, a, b);
 		puttop_b(lc_index, b);
 		puttop_a(target, a);
-		pa(a, b);
+		pa(a, b, 1);
 	}
 }

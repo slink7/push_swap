@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:23:09 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/20 16:03:32 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:44:55 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	puttop_a(int k, t_stack *a)
 	l = -1;
 	if (k <= a->height / 2)
 		while (++l < k)
-			ra(a, 0);
+			ra(a, 0, 1);
 	else
 		while (++l < a->height - k)
-			rra(a, 0);
+			rra(a, 0, 1);
 }
 
 void	puttop_b(int k, t_stack *b)
@@ -50,10 +50,10 @@ void	puttop_b(int k, t_stack *b)
 	l = -1;
 	if (k <= b->height / 2)
 		while (++l < k)
-			rb(0, b);
+			rb(0, b, 1);
 	else
 		while (++l < b->height - k)
-			rrb(0, b);
+			rrb(0, b, 1);
 }
 void	puttops(int k, int l, t_stack *a, t_stack *b)
 {
@@ -73,21 +73,21 @@ void	puttops(int k, int l, t_stack *a, t_stack *b)
 	while (++m < ft_min(tra, trb))
 	{
 		if (k <= a->height / 2)
-			rr(a, b);
+			rr(a, b, 1);
 		else
-			rrr(a, b);
+			rrr(a, b, 1);
 	}
 	while (++m < ft_max(tra, trb))
 	{
 		if (ft_max(tra, trb) == tra)
 			if (k <= a->height / 2)
-				ra(a, b);
+				ra(a, b, 1);
 			else
-				rra(a, b);
+				rra(a, b, 1);
 		else
 			if (l <= b->height / 2)
-				rb(a, b);
+				rb(a, b, 1);
 			else
-				rrb(a, b);
+				rrb(a, b, 1);
 	}
 }

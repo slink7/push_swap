@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/22 11:24:03 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:52:25 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	PRINT_STACK(t_stack *s)
 void	sort_two(t_stack *a)
 {
 	if (top_stack(a, 1) < top_stack(a, 0))
-		sa(a, 0);
+		sa(a, 0, 1);
 }
 
 void	sort_three(t_stack *a)
@@ -81,12 +81,12 @@ void	sort_three(t_stack *a)
 
 	m = find_min(a);
 	if (m == 0)
-		ra(a, 0);
+		ra(a, 0, 1);
 	else if (m == 1)
-		rra(a, 0);
+		rra(a, 0, 1);
 	if (top_stack(a, 1) < top_stack(a, 0))
-		sa(a, 0);
-	rra(a, 0);
+		sa(a, 0, 1);
+	rra(a, 0, 1);
 }
 
 int	main(int argc, char **argv)

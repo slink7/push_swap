@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:18:34 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/21 20:35:41 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:44:10 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void	ordered_pb(t_stack *a, t_stack *b)
 	while (a->height > 3)
 	{
 		if (b->height < 2)
-			pb(a, b);
+			pb(a, b, 1);
 		else
 		{
 			lc_index = get_lowest_cost_pb(a, b);
 			target = get_target_pb(lc_index, a, b);
 			puttops(lc_index, target, a, b);
-			pb(a, b);
+			pb(a, b, 1);
 		}
 	}
 }
