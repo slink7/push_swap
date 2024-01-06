@@ -6,10 +6,11 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:23:09 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 18:44:55 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 19:56:13 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "t_stack.h"
 
 int	putup_cost(int k, int h)

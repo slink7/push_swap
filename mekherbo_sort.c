@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:52 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/22 11:23:51 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:01:19 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ void	fill_stack_b(t_stack *a, t_stack *b)
 	{
 		if (top_stack(a, 0) < lentmp / 2)
 		{
-			pb(a, b);
+			pb(a, b, 1);
 			pushed++;
 		}
 		else
-			ra(a, b);
+			ra(a, b, 1);
 		stacklen--;
 	}
 	while (lentmp - pushed > 3)
 	{
-		pb(a, b);
+		pb(a, b, 1);
 		pushed++;
 	}
 }
@@ -86,7 +86,7 @@ int	get_cost(t_stack *a, t_stack *b, int ia, int ib)
 int	get_target_index(t_stack *a, t_stack *b)
 {
 	int	k;
-	int temp;
+	int	temp;
 	int	min;
 	int	out;
 
@@ -114,18 +114,18 @@ void	make_move(t_stack *a, t_stack *b, int ia, int ib)
 	k = -1;
 	if (ia <= a->height / 2)
 		while (++k < ia)
-			ra(a, b);
+			ra(a, b, 1);
 	else
 		while (++k < a->height - ia)
-			rra(a, b);
+			rra(a, b, 1);
 	k = -1;
 	if (ib <= b->height / 2)
 		while (++k < ib)
-			rb(a, b);
+			rb(a, b, 1);
 	else
 		while (++k < b->height - ib)
-			rrb(a, b);
-	pa(a, b);
+			rrb(a, b, 1);
+	pa(a, b, 1);
 }
 
 int	get_min_index(t_stack *a)
@@ -146,7 +146,7 @@ int	get_min_index(t_stack *a)
 	return (out);
 }
 
-int	put_min_top(t_stack *a)
+void	put_min_top(t_stack *a)
 {
 	int i;
 	int	k;
@@ -155,10 +155,10 @@ int	put_min_top(t_stack *a)
 	k = -1;
 	if (i <= a->height / 2)
 		while (++k < i)
-			ra(a, 0);
+			ra(a, 0, 1);
 	else
 		while (++k < a->height - i)
-			rra(a, 0);
+			rra(a, 0, 1);
 }
 
 void	mekherbo_sort(t_stack *a)
