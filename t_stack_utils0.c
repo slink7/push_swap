@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_stack0.c                                         :+:      :+:    :+:   */
+/*   t_stack_utils0.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:01:00 by scambier          #+#    #+#             */
-/*   Updated: 2023/12/19 16:19:29 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:10:27 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_stack	*read_stack(char *str)
 	char	**w;
 	t_stack	*out;
 	int		k;
+	int		temp;
 
 	if (!str)
 		return (0);
@@ -78,7 +79,15 @@ t_stack	*read_stack(char *str)
 		return (0);
 	k = out->size;
 	while (--k >= 0)
-		push_stack(out, ft_atoi(w[k]));
+	{
+		if (!ft_atoi_strict(&temp, w[k]))
+		{
+			free(out);
+			out = 0;
+			break ;
+		}
+		push_stack(out, temp);
+	}
 	ft_strarrfree(w);
 	return (out);
 }

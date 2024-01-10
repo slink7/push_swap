@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 20:23:06 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:32:15 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,6 @@
 
 #include "libft.h"
 #include "t_stack.h"
-
-int	ft_atoi_strict(int *out, char *in)
-{
-	int	sign;
-
-	*out = 0;
-	sign = 1;
-	if (*in == '-' && in++)
-		sign = -1;
-	while (*in)
-	{
-		if (!ft_isdigit(*in))
-			return (0);
-		*out = *out * 10 + *in - '0';
-		in++;
-	}
-	*out *= sign;
-	return (1);
-}
 
 t_stack	*stack_argv(int argc, char **argv)
 {
