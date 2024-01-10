@@ -8,6 +8,7 @@ SRC =\
 	ft_push.c\
 	ft_rotate.c\
 	ft_reverse_rotate.c\
+	targets.c\
 	mekherbo_sort.c
 SRC_BONUS =\
 	main_bonus.c\

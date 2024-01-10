@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:52 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 16:46:40 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:18:45 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,73 +37,6 @@ void	fill_stack_b(t_stack *a, t_stack *b)
 		pb(a, b, 1);
 		pushed++;
 	}
-}
-
-int	find_target(t_stack *a, int v)
-{
-	int	min_max;
-	int	out;
-	int	k;
-
-	min_max = 0x7FFFFFFF;
-	out = -1;
-	k = -1;
-	while (++k < a->height)
-		if (top_stack(a, k) > v && top_stack(a, k) < min_max)
-		{
-			out = k;
-			min_max = top_stack(a, k);
-		}
-	if (out != -1)
-		return (out);
-	min_max = 0x7FFFFFFF;
-	k = -1;
-	while (++k < a->height)
-		if (top_stack(a, k) < min_max)
-		{
-			out = k;
-			min_max = top_stack(a, k);
-		}
-	return (out);
-}
-
-int	get_cost(t_stack *a, t_stack *b, int ia, int ib)
-{
-	int	out;
-
-	out = 0;
-	if (ia <= a->height / 2)
-		out += ia;
-	else
-		out += a->height - ia;
-	if (ib <= b->height / 2)
-		out += ib;
-	else
-		out += b->height - ib;
-	return (out);
-}
-
-int	get_target_index(t_stack *a, t_stack *b)
-{
-	int	k;
-	int	temp;
-	int	min;
-	int	out;
-
-	k = -1;
-	min = 0x7FFFFFFF;
-	out = -1;
-	while (++k < b->height)
-	{
-		temp = find_target(a, top_stack(b, k));
-		temp = get_cost(a, b, temp, k);
-		if (temp < min)
-		{
-			min = temp;
-			out = k;
-		}
-	}
-	return (out);
 }
 
 void	make_move(t_stack *a, t_stack *b, int ia, int ib)
@@ -138,10 +71,7 @@ int	get_min_index(t_stack *a)
 	min = 0x7FFFFFFF;
 	while (++k < a->height)
 		if (top_stack(a, k) < min)
-		{
-			min = top_stack(a, k);
-			out = k;
-		}
+			double_set(&out, k, &min, top_stack(a, k));
 	return (out);
 }
 

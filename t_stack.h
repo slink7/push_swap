@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 16:42:24 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:22:16 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ typedef struct t_stack
 	int	size;
 }	t_stack;
 
-//t_stack0.c
+//t_stack_utils0.c
 t_stack	*new_stack(int size);
 int		free_stack(t_stack **s);
 t_stack	*read_stack(char *str);
 int		top_stack(t_stack *a, int off);
 
-//t_stack1.c
+//t_stack_utils1.c
 int		push_stack(t_stack *s, int k);
 int		pop_stack(t_stack *s);
 void	swap_stack(t_stack *s);
 void	rotate_stack(t_stack *s);
 void	reverse_rotate_stack(t_stack *s);
 
-//t_stack2.c
+//t_stack_utils2.c
 int		has_dup(t_stack *t);
 int		is_ordered(t_stack *t);
 int		find_min(t_stack *t);
@@ -59,19 +59,12 @@ int		rra(t_stack *a, t_stack *b, int print);
 int		rrb(t_stack *a, t_stack *b, int print);
 int		rrr(t_stack *a, t_stack *b, int print);
 
-//ft_puttop.c
-int		putup_cost(int k, int h);
-int		mega_putup_cost(int k, int l, t_stack *a, t_stack *b);
-void	puttop_a(int k, t_stack *a);
-void	puttop_b(int k, t_stack *b);
-void	puttops(int k, int l, t_stack *a, t_stack *b);
-
-//gitan_sort.c
-void	gitan_sort(t_stack *a);
-
-//run_sort.c
-void	run_sort(t_stack *a);
+void	double_set(int *pa, int va, int *pb, int vb);
 void	sort_three(t_stack *a);
+int		find_target(t_stack *a, int v);
+int		get_target_index(t_stack *a, t_stack *b);
+
+void	mekherbo_sort(t_stack *a);
 
 int		execute(char *instruction, t_stack *a, t_stack *b, int print);
 
