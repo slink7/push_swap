@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 18:32:15 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:43:20 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,22 @@ void	sort_three(t_stack *a)
 }
 
 int	main(int argc, char **argv)
-{
+{ 
 	t_stack	*a;
 
+	if (argc == 1)
+		return (0);
 	if (argc == 2)
 		a = read_stack(argv[1]);
 	else
 		a = stack_argv(argc, argv);
-	if (!a || has_dup(a))
+	if (!a || has_dup(a) || ft_strlen(argv[1]) == 0)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free_stack(&a);
 		return (0);
 	}
-	if (!is_ordered(a) || a->size < 2)
+	if (!is_ordered(a))
 	{
 		if (a->size < 3)
 			sort_two(a);

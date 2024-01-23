@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:01:00 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 18:10:27 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:23:42 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ t_stack	*read_stack(char *str)
 	w = ft_split(str, ' ');
 	out = new_stack(ft_strarrlen(w));
 	if (!out)
+	{
+		ft_strarrfree(w);
 		return (0);
+	}
 	k = out->size;
 	while (--k >= 0)
 	{
