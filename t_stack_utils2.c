@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_stack2.c                                         :+:      :+:    :+:   */
+/*   t_stack_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:41:19 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 16:48:48 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:53:21 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 #include "t_stack.h"
 
@@ -55,4 +57,11 @@ int	find_min(t_stack *t)
 int	top_stack(t_stack *a, int off)
 {
 	return (a->content[a->height - 1 - off]);
+}
+
+int	ft_free(void **p)
+{
+	free(*p);
+	*p = 0;
+	return (1);
 }

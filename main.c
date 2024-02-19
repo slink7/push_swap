@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:15:44 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/23 13:43:20 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:53:52 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sort_three(t_stack *a)
 }
 
 int	main(int argc, char **argv)
-{ 
+{
 	t_stack	*a;
 
 	if (argc == 1)

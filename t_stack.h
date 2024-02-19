@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:59:08 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 19:22:16 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:50:15 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	reverse_rotate_stack(t_stack *s);
 int		has_dup(t_stack *t);
 int		is_ordered(t_stack *t);
 int		find_min(t_stack *t);
+int		ft_free(void **p);
 
 //ft_swap.c
 int		sa(t_stack *a, t_stack *b, int print);

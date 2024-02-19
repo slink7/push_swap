@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:52 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 19:18:45 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:02:38 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fill_stack_b(t_stack *a, t_stack *b)
 			ra(a, b, 1);
 		stacklen--;
 	}
-	while (lentmp - pushed > 3)
+	while (lentmp - pushed > 3 && !is_ordered(a))
 	{
 		pb(a, b, 1);
 		pushed++;
