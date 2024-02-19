@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:04:34 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/10 18:43:35 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:44:04 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@
 
 #define EXIT_FAILURE 1
 #define EXIT_SUCCESS 0
+
+t_stack	*stack_argv(int argc, char **argv)
+{
+	t_stack	*s;
+	int		tp;
+
+	s = new_stack(argc - 1);
+	while (--argc > 0)
+	{
+		if (!ft_atoi_strict(&tp, argv[argc]))
+		{
+			free_stack(&s);
+			break ;
+		}
+		push_stack(s, tp);
+	}
+	return (s);
+}
 
 int	handle_next_line(t_stack *a, t_stack *b)
 {
@@ -41,9 +59,10 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc != 2)
-		return (0);
-	a = read_stack(argv[1]);
+	if (argc == 2)
+		a = read_stack(argv[1]);
+	else
+		a = stack_argv(argc, argv);
 	if (!a)
 	{
 		ft_putstr_fd("Error\n", 2);
