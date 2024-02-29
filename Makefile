@@ -58,29 +58,3 @@ fclean : clean
 	rm ./checker || true
 
 re : fclean all
-
-CHECKER = ../checker_linux
-
-# spec :
-# 	printf "./push_swap %s > err.txt\n" {0..4}\ {0..4}\ {0..4}\ {0..4}\ {0..4} > script.sh
-# 	bash -x script.sh
-# 	ARG="1 5 4 8 6"; ./push_swap $ARG | ./checker_linux $ARG
-
-# TEST : all
-# 	@cd push_swap_tester ; make
-# 	@echo "\n\t\e[100mTEST 3\e[0m"
-# 	@cd push_swap_tester ; ./complexity 3 100 3 $(CHECKER) || true
-# 	@echo "\n\t\e[100mTEST 5\e[0m"
-# 	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) || true
-# 	@echo "\n\t\e[100mTEST 100\e[0m"
-# 	@cd push_swap_tester ; ./complexity 100 100 700 $(CHECKER) || true
-# 	@echo "\n\t\e[100mTEST 500\e[0m"
-# 	@cd push_swap_tester ; ./complexity 500 100 5500 $(CHECKER) || true
-
-# st : all
-# 	@echo "\n\t\e[100mTEST 100\e[0m"
-# 	@cd push_swap_tester ; ./complexity 100 100 800 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
-# 	@echo "\n\t\e[100mTEST 3\e[0m"
-# 	@cd push_swap_tester ; ./complexity 3 100 3 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
-# 	@echo "\n\t\e[100mTEST 5\e[0m"
-# 	@cd push_swap_tester ; ./complexity 5 100 12 $(CHECKER) > tmp.txt ; tail -n 4 tmp.txt
