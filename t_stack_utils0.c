@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:01:00 by scambier          #+#    #+#             */
-/*   Updated: 2024/02/19 14:34:26 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:28:10 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,6 @@
 
 #include "libft.h"
 #include "t_stack.h"
-
-static int	ft_strarrfree(char **array)
-{
-	int	k;
-
-	k = 0;
-	while (array[k])
-		free(array[k++]);
-	free(array);
-	return (1);
-}
-
-static int	ft_strarrlen(char **ptr)
-{
-	int	k;
-
-	k = 0;
-	while (*ptr++)
-		k++;
-	return (k);
-}
 
 t_stack	*new_stack(int size)
 {
