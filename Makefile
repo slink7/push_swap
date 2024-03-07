@@ -1,4 +1,9 @@
 
+
+#===CONFIGURATION===
+NAME = push_swap
+NAME_BONUS = checker
+
 SRC =\
 	main.c\
 	t_stack_utils0.c\
@@ -11,7 +16,7 @@ SRC =\
 	targets.c\
 	mekherbo_sort.c
 SRC_BONUS =\
-	main_bonus.c\
+	main_checker.c\
 	t_stack_utils0.c\
 	t_stack_utils1.c\
 	t_stack_utils2.c\
@@ -21,40 +26,53 @@ SRC_BONUS =\
 	ft_swap.c\
 	execute.c
 
+CFLAGS = -Wall -Werror -Wextra
+
+LIBS = \
+	libft/libft.a\
+
+INCLUDES = -Ilibft/
+
 OBJ_DIR = obj
+
+#===AUTOMATIC VARS===
+
 OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
-OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC_BONUS)))))
+OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(addsuffix _bonus.o, $(notdir $(basename $(SRC_BONUS)))))
 
-NAME = push_swap
-NAME_BONUS = checker
+LIB_FLAGS = $(addprefix -L, $(dir $(LIBS))) $(addprefix -l, $(patsubst lib%.a, %, $(notdir $(LIBS))))
 
-CSFLAGS = -Wall -Werror -Werror 
-
+#===TARGETS===
 all : $(NAME)
 
 bonus : $(NAME_BONUS)
 
-libft/libft.a :
-	cd libft/ ; make
-
+#===COMPILING===
 $(OBJ_DIR) :
-	mkdir $(OBJ_DIR)
+	$(shell mkdir -p $(OBJ_DIR))
+$(OBJ_DIR)/%.o : mandatory/%.c
+	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
+$(OBJ_DIR)/%_bonus.o : bonus/%.c
+	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
+%.a :
+	make -C $(dir $@)
 
-$(OBJ_DIR)/%.o : %.c
-	cc -g3 $(CFLAGS) -o $@ -c $< -Ilibft/
+#===LINKING===
+$(NAME_BONUS) : $(OBJ_DIR) $(LIBS) $(OBJ_BONUS)
+	cc -o $(NAME_BONUS) $(OBJ_BONUS) $(LIB_FLAGS)
+$(NAME) : $(OBJ_DIR) $(LIBS) $(OBJ)
+	cc -o $(NAME) $(OBJ) $(LIB_FLAGS)
 
-$(NAME) : $(OBJ_DIR) $(OBJ) libft/libft.a
-	cc -g3 -o $(NAME) $(OBJ) -Llibft/ -lft
-
-$(NAME_BONUS) : $(OBJ_BONUS) $(OBJ) libft/libft.a
-	cc -g3 -o $(NAME_BONUS) $(OBJ_BONUS) -Llibft/ -lft
-
+#===CLEAN===
 clean :
-	rm $(OBJ) || true
-	rm $(OBJ_BONUS) || true
+	rm -rf $(OBJ_DIR) || true
 
+#===FCLEAN===
 fclean : clean
-	rm $(NAME) || true
-	rm ./checker || true
+	rm -f $(NAME) $(NAME_BONUS) || true
 
+#===RE===
 re : fclean all
+
+
+.PHONY : re fclean clean all default bonus
