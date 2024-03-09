@@ -50,7 +50,7 @@ bonus : $(NAME_BONUS)
 #===COMPILING===
 $(OBJ_DIR) :
 	$(shell mkdir -p $(OBJ_DIR))
-$(OBJ_DIR)/%.o : mandatory/%.c
+$(OBJ_DIR)/%.o : %.c
 	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
 $(OBJ_DIR)/%_bonus.o : bonus/%.c
 	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
@@ -74,5 +74,7 @@ fclean : clean
 #===RE===
 re : fclean all
 
+e :
+	echo $(OBJ)
 
 .PHONY : re fclean clean all default bonus

@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 22:26:00 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/06 18:54:09 by scambier         ###   ########.fr       */
+/*   Updated: 2024/03/09 03:05:04 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int	rra(t_stack *a, t_stack *b, int print)
 {
+	(void) b;
 	reverse_rotate_stack(a);
 	if (print)
 		ft_putstr_fd("rra\n", PRINT_FD);
@@ -23,6 +24,7 @@ int	rra(t_stack *a, t_stack *b, int print)
 
 int	rrb(t_stack *a, t_stack *b, int print)
 {
+	(void) a;
 	reverse_rotate_stack(b);
 	if (print)
 		ft_putstr_fd("rrb\n", PRINT_FD);
