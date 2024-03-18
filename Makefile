@@ -52,7 +52,7 @@ $(OBJ_DIR) :
 	$(shell mkdir -p $(OBJ_DIR))
 $(OBJ_DIR)/%.o : %.c
 	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
-$(OBJ_DIR)/%_bonus.o : bonus/%.c
+$(OBJ_DIR)/%_bonus.o : %.c
 	cc $(CFLAGS) -o $@ -c $< $(INCLUDES)
 %.a :
 	make -C $(dir $@)
